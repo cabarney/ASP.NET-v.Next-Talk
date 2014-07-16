@@ -1,0 +1,87 @@
+
+Where we've been
+
+	1996 - Active Server Pages (ASP)
+	2002 - ASP.NET
+	2008 - ASP.NET MVC
+	2010 - ASP.NET Web Pages
+	2012 - ASP.NET Web API, SignalR
+	2014 - ASP.NET v.Next
+
+What's wrong with the status quo?
+	How many have .NET 4.5 installed on their servers?
+	How many are able to install new versions on their web servers?
+	.NET is a big thing (200MB)
+		Http Context object (30k) newed up with each request
+			(compatibility with classic ASP)
+		Even ASP.NET itself carries a lot of baggage by default
+		It's not modular - you get the kitchen sink
+	Tied to Visual Studio, IIS
+
+What's Next: ASP.NET v.Next  - 2014
+Introducing ASP.NET v.Next
+
+	OPEN SOURCE! 
+
+	Project Structure
+
+		Build produces NuGet Package
+
+		Richer Dependencies
+			Code
+			Other projects
+			NuGet Packages
+
+		project.json
+
+	Everything is a NuGet package
+		(including the CLR!)
+
+	Project K Components
+		kvm
+		kpm
+		kre
+
+	KRE
+		New cloud-optimized version of .NET
+			10MB
+		Only 2k newed up on new request
+		MUCH faster load times, throughput
+		Can be run side-by-side with other versions
+		No install!
+		Deployed as part of your application
+			No more guessing about patch level/etc... between staging and production, or your own machine and server
+			What you code on is what gets deployed with your app
+
+	Configuration
+
+	No dependence on VS
+
+	No dependence on Windows
+
+		Cross-platform (mono)
+
+
+	Roslyn-based
+		No build step
+		Compiled on the fly
+
+
+
+DEMO
+
+Getting it
+
+No VS2013 support - VS2014
+But we can use something like Sublime (or Notepad)
+
+
+
+
+MVC v.Next
+	WebAPI merged
+	Everything Opt-in
+	
+Entity Framework?
+Web Pages
+SignalR?

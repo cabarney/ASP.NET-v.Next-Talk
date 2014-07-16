@@ -1,0 +1,82 @@
+SLIDES
+
+Where we've been
+
+	1996 - Active Server Pages (ASP)
+	2002 - ASP.NET
+	2008 - ASP.NET MVC
+	2010 - ASP.NET Web Pages
+	2012 - ASP.NET Web API, SignalR
+	2014 - ASP.NET v.Next
+
+What's wrong with the status quo?
+	How many have .NET 4.5 installed on their servers?
+	How many are able to install new versions on their web servers?
+	.NET is a big thing (200MB)
+		Http Context object (30k) newed up with each request
+			(compatibility with classic ASP)
+		Even ASP.NET itself carries a lot of baggage by default
+		It's not modular - you get the kitchen sink
+	Tied to Visual Studio, IIS
+
+What's Next: ASP.NET v.Next  - 2014
+	- 
+	cloud-based abstractions (caching, etc...)
+	config
+
+No more System.Web (no more WebForms (in ASP.NET v.Next anyway))
+
+
+Host Application (iis, katana, nowin, etc...)
+CLR Framework (.net, k, mono)
+Application Host (Microsoft.Host.Runtime, VS Designer)
+
+K? Que?
+
+CLI (Common Language Infrastructure)
+	CLS (Common Language Specification)
+	CTS (Common Type System)
+	VES (Virtual Execution System) - CLR / k Runtime
+
+
+
+
+Minimal v.Next app:
+	project.json
+	startup class
+
+
+
+
+
+
+
+DEMOS
+
+Get K
+kvm, kpm, k
+
+"compilationOptions": {"languageVersion": "experimental"},
+
+
+Sublime - Hello World Console app
+	project.json
+	NO .PROJ FILE!
+
+Hello Web
+	Talk about hosting
+	Commands
+	Side by side deploys
+	k build
+
+Hello MVC
+	Configuration
+	POCO controllers
+	C# 6
+	Web API merged ?
+	SignalR?
+	View Components
+
+Show on svrc50
+Now on OSX!
+
