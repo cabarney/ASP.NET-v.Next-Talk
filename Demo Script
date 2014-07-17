@@ -1,0 +1,217 @@
+Demo Script
+
+// Get k
+
+git clone https://github.com/aspnet/Home.git
+./kvmInstall.ps1
+
+Or:
+
+iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/master/kvminstall.ps1))
+
+kvm list
+kvm upgrade
+kvm install latest -svrc50  // This is the cloud-optimize / core CLR
+
+kvm list
+kvm use ...
+kvm list
+
+kvm alias
+(show default alias in File Explorer)
+kvm alias core 1.0.0-alpha3-10152 -svrc50
+kvm alias
+
+kvm use core
+kvm list
+kvm use default
+kvm list
+
+
+// End Get k
+
+// Console App
+
+project.json
+==================
+{
+  "dependencies": {},
+  "configurations": {
+    "net45": {},
+    "k10": {}
+  }
+}
+
+Program.cs
+==================
+using System;
+namespace Demo
+{
+	public class Program
+	{
+		public static void Main()
+		{
+			Console.WriteLine("Hello ASP.NET v.Next!");
+		}
+	}
+
+}
+
+
+k run
+
+k use core
+k run   -- WHOOPS!  Core gives you NOTHING
+ 
+project.json
+=====================
+    "k10": {
+      "dependencies": {
+        "System.Console": "4.0.0.0"
+      }
+
+k run - still doesn't work!  Everything is NuGet - need to restore
+// KPM IS NOT IIMPLEMENTED IN K10 YET!
+kvm use default
+// use myget feeds
+kpm restore -s https://www.myget.org/F/aspnetvnext/
+// back to core
+kvm use core
+k run
+// Yay!
+
+
+// END CONSOLE APP
+
+
+NO BINARIES
+NO BUILD STEP
+NO PROJECT FILE (inthe typical VS sense)
+
+// BASIC WEB
+
+project.json
+===================
+{
+  "dependencies": {
+    "Microsoft.AspNet.Hosting": "1.0.0-*",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-*"
+  },
+  "configurations": {
+    "net45": {},
+    "k10": {}
+  }
+}
+
+
+
+Startup.cs
+==================
+namespace Demo
+{
+	public class Startup
+	{
+	    public void Configure(IBuilder app)
+	    {
+	        app.Run(async context =>
+	        {
+				var message = "Hello World";
+	            context.Response.ContentLength = message.Length;
+	            await context.Response.WriteAsync(message);
+	        });
+	    }
+	}
+}
+
+
+k run
+Whoops - No main.  Microsoft.AspNet.Hosting has one though....
+
+project.json
+=============
+"commands": {
+    "web": "Microsoft.AspNet.Hosting server=Microsoft.AspNet.Server.WebListener server.urls=http://localhost:5001"
+  },
+
+k web
+http://localhost:5001/
+
+
+// Now let's add a class library
+create folder MessageGenerator
+project.json
+============
+{
+	"dependencies": {},
+	"configurations" : {
+		"net45": {},
+		"k10": {}
+	}
+}
+
+MessageGenerator.cs
+===================
+using System;
+
+namespace Demo
+{
+	public class MessageGenerator
+	{
+		public string GetMessage()
+		{
+			return "Hello from the class library!";
+		}
+	}
+}
+
+
+Add to dependencies in HelloWeb project.json:
+    "MessageGenerator": ""
+
+Modify Startup:
+		var gen = new MessageGenerator();
+	    var message = gen.GetMessage();
+
+stop web, then:
+k web
+http://localhost:5001/
+
+(again - no binaries...)
+
+// Configuration
+
+config.json
+================
+{
+  "message": "Hello from the config system!"
+}
+
+Startup.cs
+=================
+using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Http;
+using Microsoft.Framework.ConfigurationModel;
+
+namespace Demo
+{
+	public class Startup
+	{
+	    public void Configure(IBuilder app)
+	    {
+	    	var config = new Configuration().AddJsonFile("config.json");
+	        app.Run(async context =>
+	        {
+	        	//var gen = new MessageGenerator();
+	            var message = config.Get("Message");
+	            context.Response.ContentLength = message.Length;
+	            await context.Response.WriteAsync(message);
+	        });
+	    }
+	}
+}
+
+Add to project.json:
+=====================
+    "Microsoft.Framework.ConfigurationModel": "1.0.0-*",
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
+

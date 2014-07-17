@@ -20,9 +20,25 @@ What's wrong with the status quo?
 	Tied to Visual Studio, IIS
 
 What's Next: ASP.NET v.Next  - 2014
-	- 
-	cloud-based abstractions (caching, etc...)
-	config
+	- MVC, Web API and Web Pages merged in to one framework: MVC 6
+	- No dependence on System.Web
+	- New cloud-optimized subset of the .NET Framework (11MB compared to 200MB)
+		- Composed of NuGet Packages
+		- Allows you to select and include only the components you want
+	- Can deploy the framework with your app
+		- side by side
+		- insulated from changes on the server
+		- update the framework on a per-app basis on your schedule (not IT's)
+	- Host agnostic (IIS, self-host, mono) - WebAPI and SignalR were able to self host before, now MVC too
+	- Dependency Injection is baked in
+	- Uses Roslyn to compile code dynamically
+	- Open source and on Github
+
+	- New request pipeline
+	- New project structure
+	- New dependency management system
+	- New configuration system
+		- json, web.config, ini, custom (IConfigurationSource)
 
 No more System.Web (no more WebForms (in ASP.NET v.Next anyway))
 
@@ -46,8 +62,15 @@ Minimal v.Next app:
 	startup class
 
 
-
-
+MVC
+	Before, Web Pages, MVC and API were all seperate
+		team had to implement features twice
+	Now unified
+		DI-first
+		Runs IIS or self-host
+		Based on new v.Next requerst pipeline
+	Major new version - breaking changes - upgrade path availble, but not free
+	Still early!  HuBoard.com/aspnet.mvc
 
 
 
@@ -66,6 +89,7 @@ Sublime - Hello World Console app
 Hello Web
 	Talk about hosting
 	Commands
+	Class Library
 	Side by side deploys
 	k build
 
@@ -73,6 +97,7 @@ Hello MVC
 	Configuration
 	POCO controllers
 	C# 6
+	EF?
 	Web API merged ?
 	SignalR?
 	View Components
