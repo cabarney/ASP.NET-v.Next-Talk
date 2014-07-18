@@ -38,7 +38,7 @@ What's Next: ASP.NET v.Next  - 2014
 	- New project structure
 	- New dependency management system
 	- New configuration system
-		- json, web.config, ini, custom (IConfigurationSource)
+		- json, web.config, ini, environment variables, custom (IConfigurationSource)
 
 No more System.Web (no more WebForms (in ASP.NET v.Next anyway))
 

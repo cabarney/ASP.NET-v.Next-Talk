@@ -215,3 +215,19 @@ Add to project.json:
     "Microsoft.Framework.ConfigurationModel": "1.0.0-*",
     "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
 
+
+// END HELLO WEB
+
+// HELLO MVC
+
+Let's just load the project and take a look at it...
+
+Startup
+Home Controller (POCO)
+Messages Controller (Web API)
+
+
+clone MVC Sources
+git clone https://github.com/aspnet/Mvc.git
+(already done - c:\dev\code\aspnet\Mvc\src)
+
