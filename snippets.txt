@@ -1,0 +1,117 @@
+CONSOLE APP
+
+project.json
+===============
+{
+  "dependencies": {
+    "System.Console" : "4.0.0.0"
+  },
+  "configurations": {
+    "net45": {},
+    "k10": {}
+  }
+}
+
+
+Startup.cs
+======================
+using System;
+
+namespace Demo
+{
+	public class Program
+	{
+		public static void Main()
+		{
+			Console.WriteLine("Hello ASP.NET v.Next!");
+		}
+	}
+}
+
+
+K10 - project.json
+=================
+    "k10": {
+      "dependencies": {
+        "System.Console": "4.0.0.0"
+      }
+
+
+HELLO WEB
+
+project.json
+=====================
+{
+  "dependencies": {
+    "Microsoft.AspNet.Hosting": "1.0.0-*",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-*"
+  },
+  "configurations": {
+    "net45": {},
+    "k10": {}
+  }
+}
+
+Startup.cs
+==================
+namespace Demo
+{
+	public class Startup
+	{
+	    public void Configure(IBuilder app)
+	    {
+	        app.Run(async context =>
+	        {
+				var message = "Hello World";
+	            context.Response.ContentLength = message.Length;
+	            await context.Response.WriteAsync(message);
+	        });
+	    }
+	}
+}
+
+Add to project.json
+======================
+"commands": {
+    "web": "Microsoft.AspNet.Hosting server=Microsoft.AspNet.Server.WebListener server.urls=http://localhost:5001"
+  },
+
+
+
+CLASS LIBRARY (ADD TO HELLO WEB)
+Folder: Message Generator
+
+project.json
+============
+{
+	"dependencies": {},
+	"configurations" : {
+		"net45": {},
+		"k10": {}
+	}
+}
+
+MessageGenerator.cs
+===================
+using System;
+
+namespace Demo
+{
+	public class MessageGenerator
+	{
+		public string GetMessage()
+		{
+			return "Hello from the class library!";
+		}
+	}
+}
+
+
+Add to dependencies in HelloWeb project.json:
+    "MessageGenerator": ""
+
+Modify Startup:
+		var gen = new MessageGenerator();
+	    var message = gen.GetMessage();
+
+
