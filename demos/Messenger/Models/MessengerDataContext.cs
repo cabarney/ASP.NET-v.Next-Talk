@@ -3,16 +3,17 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.SqlServer;
 using Messenger.Models;
 
-namespace Messenger
+namespace Messenger.Models
 {
 	public class MessengerDataContext : DbContext
 	{
 		public DbSet<Message> Messages {get; set; }
-
-		protected override void OnConfiguring(DbContextOptions builder)
-	    {
-	        builder.UseSqlServer(@"Server=(localdb)\v11.0;Database=Messenger;Trusted_Connection=True;");
-	    }
-
 	}
+
+	public class MessengerDbContextOptions : DbContextOptions
+    {
+        public string DefaultAdminUserName { get; set; }
+
+        public string DefaultAdminPassword { get; set; }
+    }
 }
