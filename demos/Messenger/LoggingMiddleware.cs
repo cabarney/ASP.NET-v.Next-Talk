@@ -16,8 +16,9 @@ namespace Messenger
 
         public async Task Invoke(HttpContext httpContext)
         {
-            await httpContext.Response.WriteAsync("Hi from the middleware!\r\n");
-            await httpContext.Response.WriteAsync("This request is a " + httpContext.Request.Method + "\r\n");
+            Console.WriteLine("Starting " + httpContext.Request.Path);
+            await _next(httpContext);
+            Console.WriteLine("Ending " + httpContext.Request.Path);
         }
 	}
 }

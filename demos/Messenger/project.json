@@ -12,6 +12,7 @@
     "Microsoft.AspNet.Identity.SqlServer": "3.0.0-*",
     "Microsoft.AspNet.Identity.Authentication": "3.0.0-*",
     "Microsoft.AspNet.Security.Cookies": "1.0.0-*",
+    "Microsoft.AspNet.RequestContainer": "1.0.0-*",
     "Kestrel": "1.0.0-*"
   },
   "commands": {
