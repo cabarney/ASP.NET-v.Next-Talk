@@ -9,7 +9,7 @@
   "commands": {
     "web": "Microsoft.AspNet.Hosting server=Microsoft.AspNet.Server.WebListener server.urls=http://localhost:5001"
   },
-  "configurations": {
+  "frameworks": {
     "net45": {},
     "k10": {}
   }
