@@ -3,6 +3,9 @@ using Microsoft.AspNet.Routing;
 using Microsoft.Data.Entity;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Data.Entity.SqlServer;
+using Microsoft.Framework.OptionsModel;
+
 using Messenger.Models;
 
 namespace Messenger
