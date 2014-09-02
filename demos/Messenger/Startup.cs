@@ -23,7 +23,7 @@ namespace Messenger
             var configuration = new Configuration();
             configuration.AddJsonFile("localconfig.json");
 
-
+            app.UseMiddleware(typeof(LoggingMiddleware));
             app.UseStaticFiles();
             app.UseErrorPage();
 
