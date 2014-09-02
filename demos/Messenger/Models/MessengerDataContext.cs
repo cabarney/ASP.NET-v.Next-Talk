@@ -3,11 +3,15 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.SqlServer;
 using Microsoft.Framework.OptionsModel;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.SqlServer;
 using Messenger.Models;
 
 namespace Messenger.Models
 {
-	public class MessengerDataContext : DbContext
+	public class ApplicationUser : IdentityUser { }
+
+	public class MessengerDataContext : IdentityDbContext<ApplicationUser>
 	{
 		public MessengerDataContext(IServiceProvider serviceProvider, IOptionsAccessor<MessengerDbContextOptions> optionsAccessor)
                     : base(serviceProvider, optionsAccessor.Options)
