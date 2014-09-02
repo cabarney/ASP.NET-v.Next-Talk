@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNet.Mvc;
-using Messenger.Web.Models;
+using Messenger.Models;
 
 namespace Messenger
 {
