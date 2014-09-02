@@ -115,3 +115,19 @@ Modify Startup:
 	    var message = gen.GetMessage();
 
 
+config.json
+================
+{
+  "message": "Hello from the config system!"
+}
+
+Startup:
+var config = new Configuration().AddJsonFile("config.json");
+var message = config.Get("Message");
+
+Add to project.json:
+=====================
+    "Microsoft.Framework.ConfigurationModel": "1.0.0-*",
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
+    
+

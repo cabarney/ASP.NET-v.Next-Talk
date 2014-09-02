@@ -210,11 +210,11 @@ namespace Demo
 	}
 }
 
+
 Add to project.json:
 =====================
     "Microsoft.Framework.ConfigurationModel": "1.0.0-*",
     "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
-
 
 // END HELLO WEB
 
