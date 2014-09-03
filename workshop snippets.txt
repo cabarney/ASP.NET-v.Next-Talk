@@ -1,0 +1,133 @@
+SNIPPET 1
+
+            app.Run(async context => {
+                	var message = "Hello ASP.NET v.Next!";
+                	context.Response.ContentLength = message.Length;
+                	await context.Response.WriteAsync(message);
+            	});
+
+SNIPPET 2
+
+namespace Demo
+{
+	public class MessageGenerator
+	{
+		public string GetMessage()
+		{
+			return "Yo.";
+		}
+	}
+}
+
+
+SNIPPET 3
+
+{
+	"dependencies" : {},
+	"frameworks" : {
+		"net451": {},
+		"aspnetcore50": {}
+	}
+}
+
+SNIPPET 4
+
+using Microsoft.Framework.ConfigurationModel;
+
+var config = new Configuration().AddJsonFile("config.json");
+
+    "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-*",
+    
+    
+
+SNIPPET 5
+
+
+        public IActionResult Something()
+        {
+            return View();
+        }
+        
+        <h1>This is something!</h1>
+        
+        [HttpGet("/nothing")]
+        
+        
+        
+SNIPPET 6
+
+namespace MvcSample.Web
+{
+	public class PocoController
+	{
+		public string Index()
+		{
+			return "Hey.  I'm not a controller.  Or am I???";
+		}
+	}
+}
+
+
+
+
+SNIPPET 7
+Can add this to HomeContoller file to save time:
+
+public class ThingsController: Controller
+    {
+        List<Thing> _things = new List<Thing>{
+            new Thing{Id=1, Name="Foo Ball", Price=23},
+            new Thing{Id=2, Name="Flux Capacitor", Price=5433324},
+            new Thing{Id=3, Name="Warp Drive", Price=99}
+        };
+
+        public IActionResult List()
+        {
+            return View(_things);
+        }
+    }
+
+    public class Thing
+    {
+        public int Id {get;set;}
+        public string Name {get;set;}
+        public int Price {get;set;}
+    }
+
+Thing.cshtml:
+@Model MvcSample.Web.Thing
+@{
+	Layout = "/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Things!";
+}
+<ul style="margin-top: 70px;">
+@foreach(var thing in Model)
+{
+	<li>@thing.Name - @thing.Price</li>
+}
+</ul>
+
+
+
+
+
+SNIPPET 8
+        public ActionResult Get()
+        {
+            return Json(_things);
+        }
+
+        public ActionResult Get(int id)
+        {
+            return Json(_things.SingleOrDefault(x=>x.Id == id));
+        }
+
+        public ActionResult Post(Thing thing)
+        {
+            _things.Add(thing);
+            return Json(thing.Id);
+        }
+        
+        
+        
+        
